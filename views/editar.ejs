@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Receta</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Editar Receta</h1>
+
+    <form action="/editar/<%= receta.id %>" method="POST" enctype="multipart/form-data">
+        <label for="nombre">Nombre de la receta:</label>
+        <input type="text" id="nombre" name="nombre" value="<%= receta.nombre %>" required>
+
+        <label for="ingredientes">Ingredientes:</label>
+        <textarea id="ingredientes" name="ingredientes" rows="4" required><%= receta.ingredientes %></textarea>
+
+        <label for="imagen">Imagen actual:</label>
+        <% if (receta.imagen) { %>
+            <img src="<%= receta.imagen %>" alt="<%= receta.nombre %>" style="max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 10px;">
+        <% } %>
+
+        <label for="imagen">Nueva imagen (opcional):</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*">
+
+        <button type="submit">Guardar Cambios</button>
+        <a href="/" class="btn-editar">Volver al inicio</a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title><%= titulo %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#2ecc71" />
+    <link rel="icon" href="/icons/icon-192.png" type="image/png">
+
+
+</head>
+<body>
+<h1><%= titulo %></h1>
+
+<form action="/agregar" method="POST" enctype="multipart/form-data">
+    <input type="text" name="nombre" placeholder="Nombre de la receta" required>
+    <input type="text" name="ingredientes" placeholder="Ingredientes" required>
+    <input type="file" name="imagen" accept="image/*">
+    <button type="submit">Agregar Receta</button>
+</form>
+
+<h2>Ranking de Recetas Más Usadas</h2>
+<ul>
+    <% recetas
+        .filter(r => r.uso > 0)
+        .sort((a, b) => b.uso - a.uso)
+        .forEach(function(receta) { %>
+            <li><%= receta.nombre %> — Usado <%= receta.uso %> vez<%= receta.uso > 1 ? 'es' : '' %></li>
+    <% }); %>
+</ul>
+
+<h2>Lista de recetas</h2>
+
+<div class="galeria">
+    <% if (recetas.length > 0) { %>
+        <% recetas.forEach(function(receta) { %>
+            <div class="tarjeta">
+                <% if (receta.imagen) { %>
+                    <img src="<%= receta.imagen %>" alt="<%= receta.nombre %>">
+                <% } %>
+                <h3><%= receta.nombre %></h3>
+                <p><strong>Ingredientes:</strong> <%= receta.ingredientes %></p>
+                <a href="/editar/<%= receta.id %>" class="btn-editar">Editar</a>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No hay recetas todavía.</p>
+    <% } %>
+</div>
+
+<h2>Planificador Semanal</h2>
+<form action="/planificar" method="POST">
+    <% ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'].forEach(function(dia) { %>
+        <label><%= dia.charAt(0).toUpperCase() + dia.slice(1) %>:</label>
+        <select name="<%= dia %>">
+            <option value="">-- Selecciona una receta --</option>
+            <% recetas.forEach(function(receta) { %>
+                <option value="<%= receta.nombre %>" <%= plan[dia] === receta.nombre ? 'selected' : '' %>><%= receta.nombre %></option>
+            <% }); %>
+        </select><br>
+    <% }); %>
+    <button type="submit">Guardar Plan Semanal</button>
+</form>
+
+<h2>Plan de la Semana</h2>
+<ul>
+    <% for (let dia in plan) { %>
+        <li><strong><%= dia.charAt(0).toUpperCase() + dia.slice(1) %>:</strong> <%= plan[dia] || 'Sin asignar' %></li>
+    <% } %>
+</ul>
+<script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(reg => console.log('[SW] Registrado con éxito'))
+        .catch(err => console.error('[SW] Registro fallido:', err));
+    }
+  </script>
+  
+  
+</body>
+</html>

@@ -1,0 +1,107 @@
+[
+  {
+    "id": "9636bc75-ae1c-4acb-ac4c-edccfafed06f",
+    "nombre": "Arroz con pollo",
+    "ingredientes": "Arroz, pechuga, verduras, tomate, cebolla, pimentón rojo, pimentón verde, salchicha",
+    "imagen": "/uploads/1745958994975-859006917-arroz-pollo.jpg",
+    "uso": 3
+  },
+  {
+    "id": "e211386b-2ef2-48da-bb02-18cd110a61d1",
+    "nombre": "Carne en bistec",
+    "ingredientes": "Carne, tomate, cebolla, papa salada",
+    "imagen": "/uploads/1746031466947-611340690-carne bistec.jpg",
+    "uso": 2
+  },
+  {
+    "id": "47a81ebd-7079-4f0e-b28a-ee1012125c59",
+    "nombre": "Lentejas",
+    "ingredientes": "Lentejas, papa o plátano, cilantro, Carne frita",
+    "imagen": "/uploads/default.jpg",
+    "uso": 2
+  },
+  {
+    "id": "09e7ce68-7caf-4dce-8c05-d01500169419",
+    "nombre": "Pollo sudado ",
+    "ingredientes": "Cuadrito de pollo, papa, plátano, cilantro",
+    "imagen": "/uploads/default.jpg",
+    "uso": 2
+  },
+  {
+    "id": "28ce2c7c-395f-47ff-9026-848bf3930c57",
+    "nombre": "Pasta con pollo",
+    "ingredientes": "Pasta, pechuga, tomate, cebolla, pimentón, salsa de tomate",
+    "imagen": "/uploads/default.jpg",
+    "uso": 0
+  },
+  {
+    "id": "ba034fd8-bc71-432e-8f30-769802ba61bf",
+    "nombre": "Pasta con carne",
+    "ingredientes": "Pasta, carne molida, tomate, cebolla, pimentón",
+    "imagen": "/uploads/default.jpg",
+    "uso": 1
+  },
+  {
+    "id": "c31b8340-c3a4-47c8-8a5d-fca43fdf8de0",
+    "nombre": "Pasta con camarón ",
+    "ingredientes": "Pasta, camarones, mantequilla, crema de leche, cebolla larga, queso, leche(opcional), brócoli(opcional)",
+    "imagen": "/uploads/default.jpg",
+    "uso": 1
+  },
+  {
+    "id": "b1565b5b-a28a-4a40-afc2-a900de69d0bf",
+    "nombre": "Carne molida con verdura",
+    "ingredientes": "Carne murillo molida, verduras(arveja, zanahoria, habichuela), papa salada",
+    "imagen": "/uploads/default.jpg",
+    "uso": 2
+  },
+  {
+    "id": "27980d07-5062-43ea-a8c8-1ecb0fd1f44c",
+    "nombre": "Pasta Cremosa ",
+    "ingredientes": "Pasta, pechuga, leche, crema de leche, queso, champiñon o brócoli",
+    "imagen": "/uploads/default.jpg",
+    "uso": 1
+  },
+  {
+    "id": "74f3fe7e-f8bf-4f68-8961-37b785818b26",
+    "nombre": "Carne asada",
+    "ingredientes": "Carne para asar, papa salada, aguacate",
+    "imagen": "/uploads/default.jpg",
+    "uso": 2
+  },
+  {
+    "id": "894fc438-5eda-4d8e-96e9-e8aca67faa7a",
+    "nombre": "Pechuga a la plancha ",
+    "ingredientes": "Pechuga, papa puré, aguacate, platano frito",
+    "imagen": "/uploads/default.jpg",
+    "uso": 2
+  },
+  {
+    "id": "73d42be6-8730-4008-8011-3dd2d14b335e",
+    "nombre": "Pollo con guiso",
+    "ingredientes": "Pechuga, guiso, papa, verdura",
+    "imagen": "/uploads/default.jpg",
+    "uso": 1
+  },
+  {
+    "id": "e27c3f12-cf9d-422d-b84e-0ec31b653627",
+    "nombre": "pollo BBQ",
+    "ingredientes": "Cuadritos de pollo o colombinas, salsa BBQ, cebolla larga, miel, salsa de tomate(opcional), papa salada",
+    "imagen": "/uploads/default.jpg",
+    "uso": 1
+  },
+  {
+    "id": "180e569f-4241-4c6e-b774-e5d58ee0f6b6",
+    "nombre": "Crema de auyama con pollo",
+    "ingredientes": "Auyama, brócoli, zanahoria, pechuga, crema de leche, cilantro.",
+    "imagen": "/uploads/default.jpg",
+    "uso": 1
+  },
+  {
+    "id": "f793292e-77a2-448a-ba9c-83f4ac38418f",
+    "nombre": "Almuerzo restaurante",
+    "ingredientes": "Plata",
+    "imagen": "/uploads/1746890214112-722255715-restaurat.jpg",
+    "uso": 2
+  }
+]
