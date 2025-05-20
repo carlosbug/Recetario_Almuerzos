@@ -8,19 +8,37 @@
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#2ecc71" />
     <link rel="icon" href="/icons/icon-192.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
 
 </head>
 <body>
+<nav>
+  <button onclick="mostrarSeccion('recetas')">
+    <i class="fas fa-book"></i> Ver Recetas
+  </button>
+  <button onclick="mostrarSeccion('planificador')">
+    <i class="fas fa-calendar-alt"></i> Planificador
+  </button>
+  <button onclick="mostrarSeccion('agregar')">
+    <i class="fas fa-plus"></i> Agregar Receta
+  </button>
+</nav>
+
+
 <h1><%= titulo %></h1>
 
-<form action="/agregar" method="POST" enctype="multipart/form-data">
-    <input type="text" name="nombre" placeholder="Nombre de la receta" required>
-    <input type="text" name="ingredientes" placeholder="Ingredientes" required>
-    <input type="file" name="imagen" accept="image/*">
-    <button type="submit">Agregar Receta</button>
-</form>
+<div id="agregar" class="seccion">
+    <form action="/agregar" method="POST" enctype="multipart/form-data">
+        <input type="text" name="nombre" placeholder="Nombre de la receta" required>
+        <input type="text" name="ingredientes" placeholder="Ingredientes" required>
+        <input type="file" name="imagen" accept="image/*">
+        <button type="submit">Agregar Receta</button>
+    </form>
+</div>
 
+<div id="recetas" class="seccion">
 <h2>Ranking de Recetas Más Usadas</h2>
 <ul>
     <% recetas
@@ -31,8 +49,8 @@
     <% }); %>
 </ul>
 
-<h2>Lista de recetas</h2>
 
+<h2>Lista de recetas</h2>
 <div class="galeria">
     <% if (recetas.length > 0) { %>
         <% recetas.forEach(function(receta) { %>
@@ -49,27 +67,31 @@
         <p>No hay recetas todavía.</p>
     <% } %>
 </div>
+</div>
 
-<h2>Planificador Semanal</h2>
-<form action="/planificar" method="POST">
-    <% ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'].forEach(function(dia) { %>
-        <label><%= dia.charAt(0).toUpperCase() + dia.slice(1) %>:</label>
-        <select name="<%= dia %>">
-            <option value="">-- Selecciona una receta --</option>
-            <% recetas.forEach(function(receta) { %>
-                <option value="<%= receta.nombre %>" <%= plan[dia] === receta.nombre ? 'selected' : '' %>><%= receta.nombre %></option>
-            <% }); %>
-        </select><br>
-    <% }); %>
-    <button type="submit">Guardar Plan Semanal</button>
-</form>
+<div id="planificador" class="seccion">
+  <h2>Planificador Semanal</h2>
+  <form action="/planificar" method="POST">
+      <% ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'].forEach(function(dia) { %>
+          <label><%= dia.charAt(0).toUpperCase() + dia.slice(1) %>:</label>
+          <select name="<%= dia %>">
+              <option value="">-- Selecciona una receta --</option>
+              <% recetas.forEach(function(receta) { %>
+                  <option value="<%= receta.nombre %>" <%= plan[dia] === receta.nombre ? 'selected' : '' %>><%= receta.nombre %></option>
+              <% }); %>
+          </select><br>
+      <% }); %>
+      <button type="submit">Guardar Plan Semanal</button>
+  </form>
 
-<h2>Plan de la Semana</h2>
-<ul>
-    <% for (let dia in plan) { %>
-        <li><strong><%= dia.charAt(0).toUpperCase() + dia.slice(1) %>:</strong> <%= plan[dia] || 'Sin asignar' %></li>
-    <% } %>
-</ul>
+  <h2>Plan de la Semana</h2>
+  <ul>
+      <% for (let dia in plan) { %>
+          <li><strong><%= dia.charAt(0).toUpperCase() + dia.slice(1) %>:</strong> <%= plan[dia] || 'Sin asignar' %></li>
+      <% } %>
+  </ul>
+</div>
+
 <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-worker.js')
@@ -78,6 +100,20 @@
     }
   </script>
   
-  
+  <script>
+  function mostrarSeccion(id) {
+    document.querySelectorAll('.seccion').forEach(seccion => {
+      seccion.style.display = 'none';
+    });
+    const activa = document.getElementById(id);
+    if (activa) activa.style.display = 'block';
+  }
+
+  // Mostrar la sección de recetas por defecto al cargar
+  document.addEventListener('DOMContentLoaded', () => {
+    mostrarSeccion('recetas');
+  });
+</script>
+
 </body>
 </html>
