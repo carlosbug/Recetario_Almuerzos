@@ -45,7 +45,7 @@
         .filter(r => r.uso > 0)
         .sort((a, b) => b.uso - a.uso)
         .forEach(function(receta) { %>
-            <li><%= receta.nombre %> — Usado <%= receta.uso %> vez<%= receta.uso > 1 ? 'es' : '' %></li>
+            <li><%= receta.nombre %> — Usado <%= receta.uso %> vez<%= receta.uso > 1 ? 'ces' : '' %></li>
     <% }); %>
 </ul>
 
