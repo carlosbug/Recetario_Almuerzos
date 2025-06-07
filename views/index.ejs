@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -45,7 +44,7 @@
         .filter(r => r.uso > 0)
         .sort((a, b) => b.uso - a.uso)
         .forEach(function(receta) { %>
-            <li><%= receta.nombre %> — Usado <%= receta.uso %> vez<%= receta.uso > 1 ? 'ces' : '' %></li>
+            <li><%= receta.nombre %> — Usado <%= receta.uso %> <%= receta.uso === 1 ? 'vez' : 'veces' %></li>
     <% }); %>
 </ul>
 
